@@ -13,20 +13,27 @@
     )
   )
 
-; (deftest test-even-valued-fibs
-;   (testing "#even-valued-fibs"
-;     (testing "sum of even valued fibs below 10"
-;       (is (= (+ 2 8) (even-valued-fibs 10))) 
-;       )
-;     )
-;   )
-
-(deftest test-offset-fibonacci
-  (testing "#offset-fibonacci"
-    (testing "it returns a fibonacci sequence"
-      (is (= (seq [1]) (take 1 (offset-fibonacci))))
-      (is (= (seq [1 2]) (take 2 (offset-fibonacci))))
-      (is (= (seq [1 2 3 5 8 13 21 34 55 89]) (take 10 (offset-fibonacci))))
+(deftest test-fib-sequence
+  (testing "#test-fib-sequence"
+    (testing "returns a sequence of fibonacci numbers, starting at 1, to limit"
+      (is (= (seq [1 2 3 5 8]) (fib-sequence 10))) 
       )
     )
+  )
+
+(deftest test-distinct-fibonacci
+  (testing "#distinct-fibonacci"
+    (testing "it returns a fibonacci sequence"
+      (is (= (seq [1]) (take 1 (distinct-fibonacci))))
+      (is (= (seq [1 2]) (take 2 (distinct-fibonacci))))
+      (is (= (seq [1 2 3 5 8 13 21 34 55 89]) (take 10 (distinct-fibonacci))))
+      )
+    )
+  )
+
+(deftest test-even-fibs
+  (testing "#even-fibs"
+    (testing "it returns a sequence of even fibonacci numbers, up to limit"
+     (is (= (seq [2 8]) (even-fibs 10))) 
+      ))
   )

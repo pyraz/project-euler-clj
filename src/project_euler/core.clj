@@ -9,17 +9,24 @@
     )
   )
 
-(defn even-valued-fibs
-  "Finds the sum of all the even valued Fibonacci numbers below provided ceiling"
-  [ceil]
-
-  )
-
-(defn offset-fibonacci
+(defn distinct-fibonacci
   "Returns a lazy evaluated fibonacci sequence"
   []
-  (map first (filter (fn [[x y]] (> y 1)) 
-                     (iterate (fn [[a b]] [b (+ a b)]) [0 1])
-                     )
-       )
+  (filter #(not= % 0) 
+          (distinct (map first (iterate (fn [[a b]] [b (+ a b)]) [0 1]))
+                    ))
   )
+
+(defn fib-sequence
+  "Returns a fibonacci sequence, starting at 1, up to provided limit"
+  [ceil]
+  (take-while #(< % ceil) (distinct-fibonacci))
+  )
+
+(defn even-fibs
+  "Finds the sequence of even fibonacci numbers up to the limit"
+  [ceil]
+  (filter #(== (mod % 2) 0) (fib-sequence ceil))
+  )
+
+(reduce + (even-fibs 4000000))
