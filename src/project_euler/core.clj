@@ -9,4 +9,17 @@
     )
   )
 
-(multiples-of-three-and-five 1000)
+(defn even-valued-fibs
+  "Finds the sum of all the even valued Fibonacci numbers below provided ceiling"
+  [ceil]
+
+  )
+
+(defn offset-fibonacci
+  "Returns a lazy evaluated fibonacci sequence"
+  []
+  (map first (filter (fn [[x y]] (> y 1)) 
+                     (iterate (fn [[a b]] [b (+ a b)]) [0 1])
+                     )
+       )
+  )
